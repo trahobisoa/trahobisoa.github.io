@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Sciences Numériques - SNT & NSI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .hero-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="text-slate-800 min-h-screen flex flex-col">
+
+    <!-- En-tête / Hero Section -->
+    <header class="bg-slate-900 text-white hero-pattern border-b-4 border-blue-500">
+        <div class="max-w-5xl mx-auto px-6 py-16 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">
+                Espace Sciences Numériques
+            </h1>
+            <p class="text-slate-300 text-lg md:text-xl font-light max-w-2xl mx-auto">
+                Ressources, supports de cours et applications interactives pour les élèves de Seconde SNT et Terminale Spécialité NSI.
+            </p>
+        </div>
+    </header>
+
+    <!-- Contenu Principal -->
+    <main class="flex-1 max-w-5xl mx-auto w-full px-6 py-12 flex flex-col gap-16">
+
+        <!-- Section 1 : Applications Interactives -->
+        <section>
+            <div class="flex items-center mb-8">
+                <svg class="w-8 h-8 text-blue-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
+                <h2 class="text-3xl font-bold text-slate-800">Applications Interactives</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- App 1 : Traceur Python -->
+                <a href="/traceur-recursivite/" class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-200 flex flex-col">
+                    <div class="h-2 bg-blue-500"></div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">NSI Terminale</span>
+                            <svg class="w-6 h-6 text-slate-400 group-hover:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">Traceur de Récursivité</h3>
+                        <p class="text-slate-600 mb-4 flex-1">Un outil visuel pour comprendre le fonctionnement de la pile d'exécution (Call Stack) en Python pas à pas. Inclus : Factorielle, Fibonacci, PGCD, etc.</p>
+                        <div class="text-blue-600 font-semibold text-sm flex items-center">
+                            Lancer l'application <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- App 2 : BioClass 6ème -->
+                <a href="/BioClass-6eme/" class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-200 flex flex-col">
+                    <div class="h-2 bg-emerald-500"></div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">SVT Cycle 3</span>
+                            <svg class="w-6 h-6 text-slate-400 group-hover:text-emerald-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-emerald-600 transition-colors">BioClass 6ème</h3>
+                        <p class="text-slate-600 mb-4 flex-1">Alternative web pour la classification des êtres vivants. Tableau d'attributs et création de groupes emboîtés interactifs.</p>
+                        <div class="text-emerald-600 font-semibold text-sm flex items-center">
+                            Lancer l'application <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Section 2 : Supports de cours -->
+        <section>
+            <div class="flex items-center mb-8">
+                <svg class="w-8 h-8 text-indigo-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                <h2 class="text-3xl font-bold text-slate-800">Supports de cours</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Lien vers 2nde SNT -->
+                <a href="cours-snt.html" class="group relative bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200 p-8 overflow-hidden">
+                    <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-teal-50 rounded-full group-hover:scale-150 transition-transform duration-500 ease-in-out z-0"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-teal-100 text-teal-600 rounded-xl flex items-center justify-center mb-6 shadow-inner">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-teal-600 transition-colors">2nde SNT</h3>
+                        <p class="text-slate-600 mb-6">Sciences Numériques et Technologie. Retrouvez ici tous les chapitres, TP, et fiches de révisions pour la classe de Seconde.</p>
+                        <div class="inline-flex items-center font-semibold text-teal-600 bg-teal-50 px-4 py-2 rounded-lg group-hover:bg-teal-100 transition-colors">
+                            Accéder aux cours SNT
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Lien vers Terminale NSI -->
+                <a href="cours-nsi.html" class="group relative bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200 p-8 overflow-hidden">
+                    <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-indigo-50 rounded-full group-hover:scale-150 transition-transform duration-500 ease-in-out z-0"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center mb-6 shadow-inner">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors">Terminale NSI</h3>
+                        <p class="text-slate-600 mb-6">Numérique et Sciences Informatiques. Accédez aux cours (Récursivité, Arbres, BDD...), travaux pratiques et annales.</p>
+                        <div class="inline-flex items-center font-semibold text-indigo-600 bg-indigo-50 px-4 py-2 rounded-lg group-hover:bg-indigo-100 transition-colors">
+                            Accéder aux cours NSI
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="bg-white border-t border-slate-200 py-8 mt-auto">
+        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
+            <p class="text-slate-500 text-sm mb-4 md:mb-0">
+                Ressources pédagogiques mises à disposition pour les élèves.
+            </p>
+            <p class="text-slate-400 text-sm font-semibold tracking-wide">
+                Créé par Tantely Rahobisoa - IFS Singapore
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
