@@ -33,11 +33,11 @@
     <!-- Contenu Principal -->
     <main class="flex-1 max-w-5xl mx-auto w-full px-6 py-12 flex flex-col gap-16">
 
-        <!-- Section 1 : Applications Interactives -->
+        <!-- Section 1 : Applications interactives -->
         <section>
             <div class="flex items-center mb-8">
                 <svg class="w-8 h-8 text-blue-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
-                <h2 class="text-3xl font-bold text-slate-800">Applications Interactives</h2>
+                <h2 class="text-3xl font-bold text-slate-800">Applications interactives</h2>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -49,8 +49,8 @@
                             <span class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">NSI Terminale</span>
                             <svg class="w-6 h-6 text-slate-400 group-hover:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">Traceur de Récursivité</h3>
-                        <p class="text-slate-600 mb-4 flex-1">Un outil visuel pour comprendre le fonctionnement de la pile d'exécution (Call Stack) en Python pas à pas. Inclus : Factorielle, Fibonacci, PGCD, etc.</p>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">Récursivité pas à pas</h3>
+                        <p class="text-slate-600 mb-4 flex-1">Un outil visuel pour comprendre le fonctionnement de la pile d'exécution (Call Stack) en Python pas à pas.</p>
                         <div class="text-blue-600 font-semibold text-sm flex items-center">
                             Lancer l'application <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </div>
@@ -111,6 +111,35 @@
                         <div class="inline-flex items-center font-semibold text-indigo-600 bg-indigo-50 px-4 py-2 rounded-lg group-hover:bg-indigo-100 transition-colors">
                             Accéder aux cours NSI
                             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Section 3 : Vidéos -->
+        <section>
+            <div class="flex items-center mb-8">
+                <svg class="w-8 h-8 text-red-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <h2 class="text-3xl font-bold text-slate-800">Vidéos</h2>
+            </div>
+
+            <div class="grid grid-cols-1 gap-6">
+                <a href="https://www.youtube.com/@InformatiqueIFS/playlists" target="_blank" class="group relative bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200 p-8 overflow-hidden">
+                    <div class="absolute top-0 right-0 -mt-4 -mr-4 w-32 h-32 bg-red-50 rounded-full group-hover:scale-150 transition-transform duration-500 ease-in-out z-0"></div>
+                    <div class="relative z-10 flex flex-col md:flex-row items-center md:items-start gap-6">
+                        <div class="w-20 h-20 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center shadow-inner shrink-0">
+                            <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                            </svg>
+                        </div>
+                        <div class="text-center md:text-left flex-1">
+                            <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-red-600 transition-colors">Chaîne YouTube Informatique@IFS</h3>
+                            <p class="text-slate-600 mb-6">Retrouvez des explications détaillées, des résumés de cours en vidéo, et découvrez également les différents projets réalisés en 1ère et Terminale NSI sur la chaîne Informatique@IFS.</p>
+                            <div class="inline-flex items-center font-semibold text-red-600 bg-red-50 px-4 py-2 rounded-lg group-hover:bg-red-100 transition-colors">
+                                Voir les playlists
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </div>
                         </div>
                     </div>
                 </a>
