@@ -18,7 +18,6 @@
 </head>
 <body class="text-slate-800 min-h-screen flex flex-col">
 
-    <!-- En-tête / Hero Section -->
     <header class="bg-slate-900 text-white hero-pattern border-b-4 border-blue-500">
         <div class="max-w-5xl mx-auto px-6 py-16 text-center">
             <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">
@@ -30,17 +29,15 @@
         </div>
     </header>
 
-    <!-- Contenu Principal -->
-    <main class="flex-1 max-w-5xl mx-auto w-full px-6 py-12 flex flex-col gap-16">
+    <main class="flex-1 max-w-6xl mx-auto w-full px-6 py-12 flex flex-col gap-16">
 
-        <!-- Section 1 : Applications interactives -->
         <section>
             <div class="flex items-center mb-8">
                 <svg class="w-8 h-8 text-blue-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
                 <h2 class="text-3xl font-bold text-slate-800">Applications interactives</h2>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- App 1 : Traceur Python -->
                 <a href="/traceur-recursivite/" class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-200 flex flex-col">
                     <div class="h-2 bg-blue-500"></div>
@@ -72,10 +69,25 @@
                         </div>
                     </div>
                 </a>
+
+                <!-- App 3 : Simulateur Structures de Données -->
+                <a href="https://trahobisoa.github.io/Simulateur_pile_file_liste_chainee/" target="_blank" class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-200 flex flex-col">
+                    <div class="h-2 bg-orange-500"></div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-orange-100 text-orange-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">NSI Terminale</span>
+                            <svg class="w-6 h-6 text-slate-400 group-hover:text-orange-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-orange-600 transition-colors">Simulateur de piles, files et listes chaînées</h3>
+                        <p class="text-slate-600 mb-4 flex-1">Outil interactif et visuel pour comprendre le comportement des structures de données linéaires (LIFO, FIFO, Chaînage).</p>
+                        <div class="text-orange-600 font-semibold text-sm flex items-center">
+                            Lancer l'application <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </div>
+                    </div>
+                </a>
             </div>
         </section>
 
-        <!-- Section 2 : Supports de cours -->
         <section>
             <div class="flex items-center mb-8">
                 <svg class="w-8 h-8 text-indigo-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
@@ -117,7 +129,6 @@
             </div>
         </section>
 
-        <!-- Section 3 : Vidéos -->
         <section>
             <div class="flex items-center mb-8">
                 <svg class="w-8 h-8 text-red-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -148,7 +159,6 @@
 
     </main>
 
-    <!-- Pied de page -->
     <footer class="bg-white border-t border-slate-200 py-8 mt-auto">
         <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
             <p class="text-slate-500 text-sm mb-4 md:mb-0">
