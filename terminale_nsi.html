@@ -14,6 +14,59 @@
         .hero-pattern {
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
+        
+        /* Styles pour la modale (popup) */
+        .modal {
+            display: none; /* Caché par défaut */
+            position: fixed; 
+            z-index: 1000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: hidden; 
+            background-color: rgba(15, 23, 42, 0.85); /* slate-900 avec opacité */
+            backdrop-filter: blur(4px); 
+        }
+        .modal-content {
+            background-color: #f8fafc;
+            margin: 2vh auto; 
+            padding: 0;
+            width: 95%; 
+            max-width: 1200px;
+            height: 96vh;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .close {
+            color: #64748b;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .close:hover,
+        .close:focus {
+            color: #ef4444; 
+            text-decoration: none;
+        }
+        #pdfViewer {
+            width: 100%;
+            flex-grow: 1;
+            border: none;
+            background-color: #e2e8f0; 
+        }
     </style>
 </head>
 <body class="text-slate-800 min-h-screen flex flex-col">
@@ -64,32 +117,32 @@
                     </div>
                     <ul class="space-y-2 flex-1">
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/LP01-Pseudo-code.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/LP01-Pseudo-code.pdf', 'LP01-Pseudo-code.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-blue-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>LP01-Pseudo-code.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/LP02-Recursivite.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/LP02-Recursivite.pdf', 'LP02-Recursivite.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-blue-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>LP02-Recursivite.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/LP03-Programmation_objet.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/LP03-Programmation_objet.pdf', 'LP03-Programmation_objet.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-blue-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>LP03-Programmation_objet.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/LP04-Modularite.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/LP04-Modularite.pdf', 'LP04-Modularite.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-blue-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>LP04-Modularite.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/LP05-Notion%20de%20programme.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/LP05-Notion%20de%20programme.pdf', 'LP05-Notion de programme.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-blue-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>LP05-Notion de programme.pdf</span>
                             </a>
                         </li>
@@ -106,50 +159,50 @@
                     </div>
                     <ul class="space-y-2 flex-1">
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/SD01-Structures_donnees.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/SD01-Structures_donnees.pdf', 'SD01-Structures_donnees.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>SD01-Structures_donnees.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/SD02-Les_listes.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/SD02-Les_listes.pdf', 'SD02-Les_listes.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>SD02-Les_listes.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/SD03-Les_piles.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/SD03-Les_piles.pdf', 'SD03-Les_piles.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>SD03-Les_piles.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/SD04-Les_files.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/SD04-Les_files.pdf', 'SD04-Les_files.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>SD04-Les_files.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/SD05-Les_arbres.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/SD05-Les_arbres.pdf', 'SD05-Les_arbres.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>SD05-Les_arbres.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/SD06-Les_arbres_binaires.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/SD06-Les_arbres_binaires.pdf', 'SD06-Les_arbres_binaires.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>SD06-Les_arbres_binaires.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/SD07-ABR.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/SD07-ABR.pdf', 'SD07-ABR.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>SD07-ABR.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/SD08-Les_graphes.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/SD08-Les_graphes.pdf', 'SD08-Les_graphes.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>SD08-Les_graphes.pdf</span>
                             </a>
                         </li>
@@ -166,38 +219,38 @@
                     </div>
                     <ul class="space-y-2 flex-1">
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/ALGO01-Algo_parcours_graphes.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/ALGO01-Algo_parcours_graphes.pdf', 'ALGO01-Algo_parcours_graphes.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-amber-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>ALGO01-Algo_parcours_graphes.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/ALGO02-Programmation_dynamique.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/ALGO02-Programmation_dynamique.pdf', 'ALGO02-Programmation_dynamique.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-amber-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>ALGO02-Programmation_dynamique.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/ALGO03-Recherche_textuelle.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/ALGO03-Recherche_textuelle.pdf', 'ALGO03-Recherche_textuelle.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-amber-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>ALGO03-Recherche_textuelle.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/ALGO03-explRechBMH.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/ALGO03-explRechBMH.pdf', 'ALGO03-explRechBMH.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-amber-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>ALGO03-explRechBMH.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/ALGO03-expl_rech_naive.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/ALGO03-expl_rech_naive.pdf', 'ALGO03-expl_rech_naive.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-amber-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>ALGO03-expl_rech_naive.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/ALGO04-Diviser_pour_regner.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/ALGO04-Diviser_pour_regner.pdf', 'ALGO04-Diviser_pour_regner.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-amber-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>ALGO04-Diviser_pour_regner.pdf</span>
                             </a>
                         </li>
@@ -214,14 +267,14 @@
                     </div>
                     <ul class="space-y-2 flex-1">
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/BDD01-Base_de_donnees_relationnelles.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-purple-600 hover:bg-purple-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/BDD01-Base_de_donnees_relationnelles.pdf', 'BDD01-Base_de_donnees_relationnelles.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-purple-600 hover:bg-purple-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-purple-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>BDD01-Base_de_donnees_relationnelles.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/BDD02-SQL.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-purple-600 hover:bg-purple-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/BDD02-SQL.pdf', 'BDD02-SQL.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-purple-600 hover:bg-purple-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-purple-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>BDD02-SQL.pdf</span>
                             </a>
                         </li>
@@ -238,20 +291,20 @@
                     </div>
                     <ul class="space-y-2 flex-1">
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/AMSER03-OS.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-rose-600 hover:bg-rose-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/AMSER03-OS.pdf', 'AMSER03-OS.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-rose-600 hover:bg-rose-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-rose-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>AMSER03-OS.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/AMSER04-Processus.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-rose-600 hover:bg-rose-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/AMSER04-Processus.pdf', 'AMSER04-Processus.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-rose-600 hover:bg-rose-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-rose-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>AMSER04-Processus.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/AMSER05-SoC.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-rose-600 hover:bg-rose-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/AMSER05-SoC.pdf', 'AMSER05-SoC.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-rose-600 hover:bg-rose-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-rose-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>AMSER05-SoC.pdf</span>
                             </a>
                         </li>
@@ -268,20 +321,20 @@
                     </div>
                     <ul class="space-y-2 flex-1">
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/AMSER01-Rappels_reseaux.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-cyan-600 hover:bg-cyan-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/AMSER01-Rappels_reseaux.pdf', 'AMSER01-Rappels_reseaux.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-cyan-600 hover:bg-cyan-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-cyan-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>AMSER01-Rappels_reseaux.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/AMSER02-Routage.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-cyan-600 hover:bg-cyan-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/AMSER02-Routage.pdf', 'AMSER02-Routage.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-cyan-600 hover:bg-cyan-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-cyan-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>AMSER02-Routage.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/AMSER06-Securisation.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-cyan-600 hover:bg-cyan-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/AMSER06-Securisation.pdf', 'AMSER06-Securisation.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-cyan-600 hover:bg-cyan-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-cyan-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>AMSER06-Securisation.pdf</span>
                             </a>
                         </li>
@@ -294,7 +347,7 @@
         <!-- Section 1.5 : Travaux Pratiques & Projets -->
         <section>
             <div class="flex items-center mb-8 pt-8 border-t border-slate-200">
-                <svg class="w-8 h-8 text-teal-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                <svg class="w-8 h-8 text-teal-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
                 <h2 class="text-3xl font-bold text-slate-800">Travaux Pratiques & Projets</h2>
             </div>
             
@@ -310,38 +363,38 @@
                     <p class="text-sm text-slate-500 mb-4">Sujets d'exercices pratiques en Python pour appliquer les concepts du cours.</p>
                     <ul class="space-y-2 flex-1 grid grid-cols-1 sm:grid-cols-2 gap-x-4">
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/TP-Balles_rebondissantes.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-teal-600 hover:bg-teal-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-2 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/TP-Balles_rebondissantes.pdf', 'TP-Balles_rebondissantes.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-teal-600 hover:bg-teal-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-2 mt-0.5 text-teal-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>TP-Balles_rebondissantes.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/TP-Immeubles.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-teal-600 hover:bg-teal-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-2 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/TP-Immeubles.pdf', 'TP-Immeubles.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-teal-600 hover:bg-teal-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-2 mt-0.5 text-teal-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>TP-Immeubles.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/TP-Rendu_monnaie.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-teal-600 hover:bg-teal-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-2 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/TP-Rendu_monnaie.pdf', 'TP-Rendu_monnaie.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-teal-600 hover:bg-teal-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-2 mt-0.5 text-teal-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>TP-Rendu_monnaie.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/TP-Representation_d_un_graphe.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-teal-600 hover:bg-teal-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-2 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/TP-Representation_d_un_graphe.pdf', 'TP-Representation_d_un_graphe.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-teal-600 hover:bg-teal-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-2 mt-0.5 text-teal-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span class="break-words">TP-Representation_d_un_graphe.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/TP-Rugby.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-teal-600 hover:bg-teal-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-2 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/TP-Rugby.pdf', 'TP-Rugby.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-teal-600 hover:bg-teal-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-2 mt-0.5 text-teal-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>TP-Rugby.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/TP-classement_villes.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-teal-600 hover:bg-teal-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-2 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/TP-classement_villes.pdf', 'TP-classement_villes.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-teal-600 hover:bg-teal-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-2 mt-0.5 text-teal-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>TP-classement_villes.pdf</span>
                             </a>
                         </li>
@@ -359,14 +412,14 @@
                     <p class="text-sm text-slate-500 mb-4">Mise en pratique approfondie et création d'applications concrètes.</p>
                     <ul class="space-y-2 flex-1">
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/PROJET1-Chasse_tresor.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/PROJET1-Chasse_tresor.pdf', 'PROJET1-Chasse_tresor.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-indigo-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>PROJET1-Chasse_tresor.pdf</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/trahobisoa/Terminale_NSI/blob/main/PROJET2-Jeu_cartes.pdf" target="_blank" class="flex items-start text-sm text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg p-2 transition-colors">
-                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <a href="#" onclick="openPdf('https://raw.githubusercontent.com/trahobisoa/Terminale_NSI/main/PROJET2-Jeu_cartes.pdf', 'PROJET2-Jeu_cartes.pdf'); return false;" class="flex items-start text-sm text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg p-2 transition-colors">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-indigo-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                 <span>PROJET2-Jeu_cartes.pdf</span>
                             </a>
                         </li>
@@ -425,7 +478,7 @@
     <footer class="bg-white border-t border-slate-200 py-8 mt-auto">
         <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
             <p class="text-slate-500 text-sm mb-4 md:mb-0">
-                Ressources pédagogiques de NSI mises à disposition pour les élèves.
+                Ressources pédagogiques mises à disposition des élèves de l'IFS.
             </p>
             <p class="text-slate-400 text-sm font-semibold tracking-wide flex items-center">
                 Créé par Tantely Rahobisoa 
@@ -434,6 +487,70 @@
             </p>
         </div>
     </footer>
+    
+    <!-- Structure de la Modale pour afficher le PDF -->
+    <div id="pdfModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="pdfTitle" class="font-bold text-slate-800 text-lg flex items-center">
+                    <svg class="w-5 h-5 text-indigo-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    <span id="pdfTitleText">Document</span>
+                </h3>
+                <span class="close" onclick="closePdf()" title="Fermer (Échap)">&times;</span>
+            </div>
+            <!-- L'iframe chargera le PDF à travers la visionneuse Google Docs pour contourner les restrictions CORS -->
+            <iframe id="pdfViewer" src="" title="Lecteur PDF"></iframe>
+        </div>
+    </div>
+
+    <!-- Script pour gérer l'ouverture et la fermeture de la modale PDF -->
+    <script>
+        function openPdf(pdfUrl, title) {
+            var modal = document.getElementById("pdfModal");
+            var viewer = document.getElementById("pdfViewer");
+            var titleElement = document.getElementById("pdfTitleText");
+            
+            titleElement.textContent = title;
+            
+            // Utilisation de la visionneuse Google Drive pour contourner les restrictions X-Frame-Options de GitHub
+            var googleViewerUrl = "https://docs.google.com/viewer?url=" + encodeURIComponent(pdfUrl) + "&embedded=true";
+            
+            viewer.src = googleViewerUrl;
+            modal.style.display = "block";
+            
+            // Empêcher le défilement de la page d'arrière-plan
+            document.body.style.overflow = "hidden";
+        }
+
+        function closePdf() {
+            var modal = document.getElementById("pdfModal");
+            var viewer = document.getElementById("pdfViewer");
+            
+            modal.style.display = "none";
+            viewer.src = ""; // Arrêter le chargement de l'iframe
+            
+            // Rétablir le défilement de la page
+            document.body.style.overflow = "auto";
+        }
+
+        // Fermer la modale en cliquant en dehors
+        window.onclick = function(event) {
+            var modal = document.getElementById("pdfModal");
+            if (event.target == modal) {
+                closePdf();
+            }
+        }
+        
+        // Fermer la modale avec la touche Échap
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                var modal = document.getElementById("pdfModal");
+                if (modal.style.display === "block") {
+                    closePdf();
+                }
+            }
+        });
+    </script>
 
 </body>
 </html>
